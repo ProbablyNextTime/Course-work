@@ -50,7 +50,7 @@ app.use('/api', require('./routers/api'));
 
 const port = 4000;
 
-const url = 'mongodb://localhost:27017/labs-db';  // Connection URL
+const url = 'mongodb+srv://user-lab6:21212323@cluster0-qsysn.mongodb.net/test?retryWrites=true&w=majority' || 'mongodb://localhost:27017/labs-db';  // Connection URL
 const conOptions = { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false };  // Connection options
 
 MongoClient.connect(url, conOptions)
