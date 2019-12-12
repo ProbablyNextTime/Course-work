@@ -48,8 +48,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use('/api', require('./routers/api'));
 
-// const port = process.env.port || 4000;
-app.set('port', process.env.PORT || 8080);
+const port = process.env.PORT || 4000;
+// app.set('port', process.env.PORT || 8080);
 
 const url = 'mongodb+srv://user-lab6:21212323@cluster0-qsysn.mongodb.net/test?retryWrites=true&w=majority' || 'mongodb://localhost:27017/labs-db';  // Connection URL
 const conOptions = { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false };  // Connection options
