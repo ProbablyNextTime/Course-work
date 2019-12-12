@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head }}
+</head>
+<body>
+
+    {{> header }}
+
+
+    <form class="registerForm" action="http://localhost:4000/register" method="post">
+
+        <label for="login">Login</label>
+        <input minlength="4" maxlength="20" id="login" name="login" type="text" required placeholder="Enter login">
+
+        <label for="password">password</label>
+        <input  minlength="8" maxlength="20" id="password" name="password" type="password" required placeholder="Enter password">
+
+        <label for="passwordConfirmation">Password Confirmation</label>
+        <input  minlength="8" maxlength="20" id="passwordConfirmation" name="passwordConfirmation" type="password" required placeholder="Confirm password">
+
+
+        {{#err}}
+            <h2 style="margin-top:8px">{{err}}</h2>
+        {{/err}}
+        
+        <input type="submit" value="Sign up">
+    </form>
+
+    {{> footer }}
+</body>
+</html>

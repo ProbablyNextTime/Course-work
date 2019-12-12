@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head }}
+  
+</head>
+<body>
+
+    {{> header }}
+
+    <div class="addEventForm">
+        <form action="http://localhost:4000/events/new" method="post", enctype="multipart/form-data">
+            <label for="name">Name of event</label>
+            <input type="text" required id="name" name="name" placeholder="Name...">
+            
+            <label for="difficulty">Difficulty</label>
+            <input type="number" required id="difficulty" name="difficulty" min="1" max="10" step="1" placeholder="from 1 to 10...">
+
+            <label for="dline">Deadline</label>
+            <input type="date" required id="dline" name="deadline">
+
+            <label for="description">Description</label>
+            <input type="text" required id="description" name="description" placeholder="Description...">
+
+            <label for="photo">Upload your photo</label>
+            <input type="file" id="photo" name="photo">
+        
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+
+    {{> footer }}
+</body>
+</html>

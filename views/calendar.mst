@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head }} 
+</head>
+<body>
+
+  {{> header }}
+  <div class="calendar">
+    {{#calendar}}
+        <h1>{{name}}</h1>
+    {{/calendar}}
+                <div class="EntitiesList">
+                    <ul>
+            {{#Events}}
+                    <li><a href="http://localhost:4000/events/{{_id}}">{{name}}</a></li>
+            {{/Events}}
+                    </ul>
+                </div>  
+
+                <span class="addEventToCalendar">
+                  <form action="http://localhost:4000/calendarAddEvent" method="post">
+                    <select required name="eventId" id="eventId">
+                      <option value="" selected disabled hidden>Choose here</option>
+                    {{#notAssignedEvents}}
+                      <option value={{_id}}>{{name}}</option>
+                    {{/notAssignedEvents}}
+                    </select>
+                  {{#calendar}}
+                    <input type="hidden" value="{{_id}}" name="calendarId">
+                  {{/calendar}} 
+                    <input type="submit" value="Add event">
+                  </form>
+
+                <form action="http://localhost:4000/calendarDeleteEvent" method="post">
+                    <select required name="eventId" id="eventId">
+                      <option value="" selected disabled hidden>Choose here</option>
+                    {{#Events}}
+                      <option value={{_id}}>{{name}}</option>
+                    {{/Events}}
+                    </select>
+                  {{#calendar}}  
+                    <input type="hidden" value="{{_id}}" name="calendarId">
+                  {{/calendar}} 
+                    <input type="submit" value="Delete event">
+                  </form>
+                </span>    
+    </div>
+    {{#calendar}}
+    <img src='{{photoUrl}}' class="calendarPhoto">
+    <div class="calendarPhotoUpdate">
+    <form action="http://localhost:4000/calendars/update/{{id}}" method="post" enctype="multipart/form-data">
+        <label for="photo">choose new photo</label>
+        <input required type="file" id="photo" name="photo">
+
+        <input type="submit" value="Update">
+        <input type="hidden" name="id" value="{{id}}">
+    </form>
+
+    <form action="http://localhost:4000/calendars/delete/{{id}}" method="post">
+        <input type="submit" value="Delete calendar">
+        <input type="hidden" name="id" value="{{id}}">
+    </form>
+    </div>
+    {{/calendar}}
+    
+
+    {{> footer }}
+</body>
+</html>

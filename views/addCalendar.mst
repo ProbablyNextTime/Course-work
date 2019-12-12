@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head }}
+  
+</head>
+<body>
+
+    {{> header }}
+
+    <div class="addEventForm">
+        <form action="http://localhost:4000/calendar/new" method="post", enctype="multipart/form-data">
+            <label for="name">Name of calendar</label>
+            <input type="text" required id="name" name="name" placeholder="Name...">
+
+            <label for="photo">Upload your photo</label>
+            <input type="file" id="photo" name="photo">
+        
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+
+    {{> footer }}
+</body>
+</html>

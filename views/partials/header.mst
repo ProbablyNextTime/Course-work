@@ -1,0 +1,22 @@
+<div class="topnavbar">
+      <img src="../images/logo2.png" class="img">
+      {{^currentUser}}
+        <a class="register" href="../register">register</a>
+        <a class="login" href="../login">login</a>
+        <a class="about" href="../about">About</a>
+      {{/currentUser}}
+      {{#currentUser}}
+        <a class="logOut" href="../logout">log out</a>
+         <a class="about" href="../about">About</a>
+        {{#currentUser.role}}
+        <a class="users" href="../users">Users</a>
+        {{/currentUser.role}}
+        <a class="calendars" href="../calendars">Calendars</a>
+        <a class="entities" href="../events?page=0">Events</a>
+      {{/currentUser}}
+
+
+      
+      <a class="home" href="../">Home</a>
+      
+    </div> 

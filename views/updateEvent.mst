@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head }}
+  
+</head>
+<body>
+
+    {{> header }}
+
+    {{#Event}}
+    <div class="addEventForm">
+        <form action="http://localhost:4000/events/update" method="post", enctype="multipart/form-data">
+            <label for="name">Name of event</label>
+            <input type="text" required id="name" name="name" value="{{name}}">
+            
+            <label for="difficulty">Difficulty</label>
+            <input type="number" required id="difficulty" name="difficulty" min="1" max="10" step="1" value="{{difficulty}}">
+
+            <label for="dline">Deadline</label>
+            <input type="date" required id="dline" name="deadline" value="{{deadline}}">
+
+            <label for="status">status</label>
+            <input type="number" required id="status" name="status" value="{{status}}" min="-1" max ="1">
+
+            <label for="description">Description</label>
+            <input type="text" required id="description" name="description" value="{{description}}">
+
+            <label for="photo">Upload new theme</label>
+            <input type="file" id="photo" name="photo">
+        
+            <input type="submit" value="Update">
+            <input type="hidden" value="{{id}}" name="id">
+        </form>
+    </div>
+    {{/Event}}
+
+
+    {{> footer }}
+</body>
+</html>

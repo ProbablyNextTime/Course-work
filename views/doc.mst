@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head }}
+  
+</head>
+<body>
+    {{> header }}
+    <div class="wrapper">
+        <h2> Service Endpoint </h2>
+        <p> http://localhost:3000/api/ <p>
+        <br>
+        <br>
+
+        <h3> Models </h3>
+        
+        <h4> User :</h4>
+        <div class="mdoel"> 
+          <pre> events :       array of instances : mongoose.Schema.Types.ObjectId, ref: 'events' </pre>
+          <pre> calendars :    array of instances : mongoose.Schema.Types.ObjectId, ref: 'calendarsofevents' </pre>
+          <pre> login :        String </pre>
+          <pre> password :     String </pre>
+          <pre> role :         values [0(user), 1(admin)]</pre>
+          <pre> fullname :     String </pre>
+          <pre> registeredAt : Date </pre>
+          <pre> isDisabled :   Bolean </pre>
+          <pre> avaUrl :       String </pre>
+          <pre> bio :          String </pre>
+        </div>
+        
+        <h4> Event :</h4>
+        <div class="mdoel"> 
+          <pre> name :         String </pre>
+          <pre> dificulty :    Number values[0 - 10] </pre>
+          <pre> deadLine :     Date </pre>
+          <pre> description :  String </pre>
+          <pre> themeUrl :     String </pre>
+          <pre> status :       Number values[-1(undone), 0(pending), 1(done)] </pre>
+        </div>
+
+        <h4> Calendar :</h4>
+        <div class="mdoel"> 
+          <pre> name :         String  </pre>
+          <pre> creationDate : Date </pre>
+          <pre> photoUrl :     String </pre>
+          <pre> events :          mongoose.Schema.Types.ObjectId, ref: 'events' </pre>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        
+        <h3> Authorization </h3>
+        <pre> My API uses Basic Auth. Every API call except Registration requires authentication.</pre>
+        <pre> We recommend using built-in Basic Auth in Postman/Rested </pre>
+
+        <h4> REST Resource v1.users :</h4>
+          <pre> get      :    GET    /v1/users/{id}                                            gets users by given {id}                                                                            if successful, response body contains an instance of user </pre>
+          <pre> get list :    GET    /v1/users?page={page}&limit={limit}&search={search}       gets paginated list of users. Def val :{limit: 3, page: 1, search=""}                               if successful, response body contains an list of instances of user</pre>
+          <pre> create   :    POST   /v1/users                                                 creates user entity from body information                                                           if successful, response body contains an instance of user</pre>
+          <pre> delete   :    DELETE /v1/users/{id}                                            deletes user by id                                                                                  if successful, response body is empty</pre>
+          <pre> update   :    PUT    /v1/users/{id}                                            update user by id from body information                                                             if successful, response bodt contains an instance of updated user</pre>
+        
+        <h4> REST Resource v1.events :</h4>
+          <pre> get      :    GET    /v1/events/{id}                                           gets event of authenticated user by given {id}                                                      if successful, response body contains an instance of event </pre>
+          <pre> get list :    GET    /v1/events?page={page}&limit={limit}&search={search}      gets paginated list of events of authenticated user. Def val :{limit: 3, page: 1, search=""}        if successful, response body contains an list of instances of event</pre>
+          <pre> create   :    POST   /v1/events                                                creates event entity from body information                                                          if successful, response body contains an instance of event</pre>
+          <pre> delete   :    DELETE /v1/events/{id}                                           deletes event by id                                                                                 if successful, response body is empty</pre>
+          <pre> update   :    PUT    /v1/events/{id}                                           update event by id from body information                                                            if successful, response bodt contains an instance of updated event</pre>
+       
+        <h4> REST Resource v1.events :</h4>
+          <pre> get      :    GET    /v1/calendars/{id}                                        gets calendar of authenticated user by given {id}                                                   if successful, response body contains an instance of calendar </pre>
+          <pre> get list :    GET    /v1/calendars?page={page}&limit={limit}&search={search}   gets paginated list of calendars of authenticated user. Def val :{limit: 3, page: 1, search=""}     if successful, response body contains an list of instances of calendar</pre>
+          <pre> create   :    POST   /v1/calendars                                             creates calendar entity from body information                                                       if successful, response body contains an instance of calendar</pre>
+          <pre> delete   :    DELETE /v1/calendars/{id}                                        deletes calendar by id                                                                              if successful, response body is empty</pre>
+          <pre> update   :    PUT    /v1/calendars/{id}                                        update calendar by id from body information                                                         if successful, response bodt contains an instance of updated calendar</pre>
+        
+        <h4> REST Resource v1.links  :</h4>
+          <pre> create      : POST    /v1/links                                                create link between calendar and event by given ids                                                 if successful, response body is emty </pre>
+          <pre> delete      : DELTE   /v1/links                                                deletes link between calendar and event by given ids                                                if successful, response body is emty </pre>
+          If request wasnt successful response body contains property error with error message
+
+        <h4> Errors : </h4>
+          <pre>If request wasn`t successful response body contains property message with error message</pre>
+
+        <table>
+          <tr>
+            <th><b>HTTP CODE</b></th>
+            <th><b>Error description</b></th>
+            <th><b>Error message</b></th>
+          </tr>
+          <tr>
+            <td>400</td>
+            <td>Request doesn`t match API requirements</td>
+            <td>Bad request, Such login exists</td>
+          </tr>
+          <tr>
+            <td>401</td>
+            <td>authentication required</td>
+            <td>Unauthorized</td>
+          </tr>
+          <tr>
+            <td>403</td>
+            <td>authenticated user doesn`r have rights to accses information</td>
+            <td>Forbiden</td>
+          </tr>
+          <tr>
+            <td>404</td>
+            <td>Requested page or entity wasn`t found</td>
+            <td>Not found</td>
+          </tr>
+          <tr>
+            <td>500</td>
+            <td>Internal server error</td>
+            <td>Server error</td>
+          </tr>
+        </table>
+        <br><br><br><br><br>
+    </div>  
+
+    {{> footer }}
+</body>
+</html>

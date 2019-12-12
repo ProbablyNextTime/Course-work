@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>About</title>
+  {{> head }}
+  
+</head>
+<body>
+
+  {{> header }}
+
+<div class="AboutInfo">
+        <p>Can YOU create the BEST bassline ever?</p>
+    </div>
+
+
+    {{> footer }}
+</body>
+</html>

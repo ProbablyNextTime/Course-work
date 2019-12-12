@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {{> head }}
+</head>
+<body>
+    {{> header }}
+{{#User}}
+    <div class="UserPhoto">
+        <img src="{{avaUrl}}">
+    </div>
+
+    <div class="UserInfo">
+        <h2>{{fullname}}</h2>
+
+        <p id="Login"><strong>Login</strong>: {{login}}</p>
+
+    <p>{{bio}}</p>
+    </div>
+    {{^curUsersPage}}
+    <form action="http://localhost:4000/changeUserRole/{{id}}" method="post">
+    <select name="role" value="{{id}}">
+        {{#User.role}}
+            <option value="0">User</option>
+            <option value="1" selected>Admin</option>
+        {{/User.role}}
+        {{^User.role}}
+            <option value="0" selected>User</option>
+            <option value="1">Admin</option>
+        {{/User.role}} 
+    </select>
+
+        <input type="submit" value="Change role">
+    </form>
+    {{/curUsersPage}}
+{{/User}}
+
+    {{> footer }}
+</body>
+</html>
