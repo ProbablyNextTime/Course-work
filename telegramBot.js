@@ -3,7 +3,7 @@ const user = require('./models/user');
 const event = require('./models/event');
 
 // replace the value below with the Telegram token you receive from @BotFather
-//const token = '885391252:AAGvMLDuOXELn7kKjSb1RI48QW4idPgGw4A';
+const token = '885391252:AAGvMLDuOXELn7kKjSb1RI48QW4idPgGw4A';
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, { polling: true });
